@@ -1,0 +1,65 @@
+{% extends "my_app/base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-4">
+    <div class="title-films">
+        <h1>Переглянуті серіали</h1>
+    </div>
+    <div class="cool-table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Постер</th>
+                    <th>Назва</th>
+                    <th>Дата додавання</th>
+                    <th>Коментар</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for series in series %}
+                    <tr>
+                        <td> <div class="film-img-wrap"> <img alt="" src='{{ series.img_url }}' > </div> </td>
+                        <td>{{ series.title }}</td>
+                        <td>{{ series.date }}</td>
+                        <td>{{ series.comment }}</td>
+
+                        <td> <form class="film-btn-1" action="{% url 'my_app:delete_watched_series' series.id %}" method="post">
+                                {% csrf_token %}
+                                <input class="my-button" type="submit" value="Видалити">
+                        </form>
+                            <form action="{% url 'my_app:correct_watched_series' series.id %}" method="get">
+                                {% csrf_token %}
+                                <input class="my-button" type="submit" value="Редагувати">
+                            </form>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: 20px;">
+        <div style="display: flex; align-items: center;">
+
+        <form  action="{% url 'my_app:random_watched_series' %}" method="post">
+            {% csrf_token %}
+        <input class="my-button-random" type="submit" value="Порадити до перегляду">
+        </form>
+            <div class="cool-random-wrap">
+                {% if rand_film %}
+                <h2 style="font-size: 20px;" class="random-title">{{ rand_film }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

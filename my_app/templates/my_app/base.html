@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    {% load static %}
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'my_app/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+<header>
+<div class="my-bar-line" >
+<nav class="navbar navbar-expand-sm navbar-white bg-white">
+  <div class="container-fluid">
+    <img src="https://beetroot.co/wp-content/uploads/sites/2/2019/12/Beetroot-Logo_450x450px.png" alt="Логотип" width="50" height="50" class="logo" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        <li class="nav-item">
+          <a href="{% url 'my_app:home' %}">
+             <img src="https://www.psdgraphics.com/wp-content/uploads/2020/06/pink-flat-home-icon.jpg" width="74" height="50">
+</a>
+        </li>
+          <li class="nav-item">
+              <div id="game-container">
+          <a href="{% url 'my_app:play_game' %}">
+             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ6olpkWrT688twdcq-UOOO7az5vvOpomgow&usqp=CAU" width="75" height="50">
+          </a>
+                  </div>
+          </li>
+          <div style="margin-top: 5px;">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Фільми</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown03">
+               <div class="reg-text">
+                    <li><a class="dropdown-item" href="{% url 'my_app:films' %}">До перегляду</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'my_app:watched_films' %}">Переглянуті</a></li>
+               </div>
+            </ul>
+          </li>
+              </div>
+          <div style="margin-top: 5px;">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Серіали</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                <div class="reg-text">
+                    <li><a class="dropdown-item" href="{% url 'my_app:series' %}">До перегляду</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'my_app:watched_series' %}">Переглянуті</a></li>
+                </div>
+            </ul>
+          </li>
+              </div>
+          <div style="margin-top: 5px;">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Книги</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                <div class="reg-text">
+                    <li><a class="dropdown-item" href="{% url 'my_app:books' %}">Нові</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'my_app:readed_books' %}">Прочитані</a></li>
+                </div>
+            </ul>
+          </li>
+          </div>
+
+
+      </ul>
+
+
+      <div class="dropdown text-end" style="margin-right: 80px">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src=https://lms.beetroot.academy/static/media/imageGroup.4dfe4c3a.jpg alt="mdo" width="50" height="50" class="rounded-circle">
+          </a>
+
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" >
+              {% if user.is_authenticated %}
+                  <div class="reg-text">
+            <li>Привіт {{ user.get_username }}</li>
+                  <li><hr class="dropdown-divider"></li>
+            <li ><a href="{% url 'logout' %}?next={{ request.path }}" style="color: black;">Вийти</a></li>
+                  {% else %}
+            <div class="reg-text">
+                <li><a href="{% url 'login' %}?next={{ request.path }}" style="color: black;">Увійти</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                <li><a href="{% url 'my_app:sign_up' %}?next={{ request.path }}" style="color: black;">Зареєструватись</a></li>
+            </div>
+            </div>
+            {% endif %}
+          </ul>
+
+     </div>
+
+    </div>
+  </div>
+</nav>
+{#</header>>#}
+</div>
+</header>
+<main>
+
+<div class="container-main">
+{% block content %}
+
+{% endblock %}
+</div>
+</main>
+
+
+    <div class="my-bar-line-f" >
+        <footer>
+            <p class="footer-text" style="color: black;">&copy; Sentoaa, 2023.
+                <a href="https://beetroot.academy/" style="color: black;">Навчитись робити такі проекти та навіть більше</a>
+            </p>
+        </footer>
+    </div>
+
+
+<div id="scrollToTop">
+
+        <img src="{% static 'my_app/css/arrowup.png' %}" class="scrollToTop-ico">
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('scroll', function() {
+      var scrollToTopButton = document.getElementById('scrollToTop');
+
+      if (window.pageYOffset > 0) {
+        scrollToTopButton.style.display = 'block';
+      } else {
+        scrollToTopButton.style.display = 'none';
+      }
+    });
+
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+        window.scrollTo(0, 0); // Прокрутка до верха страницы
+    });
+});
+
+
+
+</script>
+
+</body>
+</html>

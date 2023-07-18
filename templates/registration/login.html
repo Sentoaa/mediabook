@@ -1,0 +1,41 @@
+{% extends "my_app/base.html" %}
+
+{% block content %}
+
+
+{% load crispy_forms_tags %}
+<div class="container-login">
+
+
+    <div class="cool-login-wrap">
+        <form method="post" class="loginform" action="{% url 'login' %}" style="color: white;">
+      {% if form.errors %}
+
+        <h2 style="color: white">Щось не так з іменем користувача або паролем, спробуйте ще ;)</h2>
+        {% endif %}
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+            {% else %}
+            <h2 style="color: white"> Будь ласка залогіньтесь :)</h2>
+            {% endif %}
+        {% endif %}
+    {% csrf_token %}
+    {{ form.username|as_crispy_field }}
+    {{ form.password|as_crispy_field }}
+    <input type="submit" class='my-button-reg button-login' value="Увійти">
+        </form>
+
+    <input type="submit" class='my-button-reg button-register' onclick="redirectToPage()" value="Зареєструватися">
+    </div>
+</div>
+
+<script>
+    function redirectToPage() {
+        // Зміна URL
+        window.location.href = "{% url 'my_app:sign_up' %}";
+    }
+</script>
+
+{% endblock %}

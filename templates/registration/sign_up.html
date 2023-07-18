@@ -1,0 +1,32 @@
+{% extends "my_app/base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class=container-sign-up>
+
+<div class="cool-s-wrap">
+        <form class="signupform" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+         <input type="submit" class='my-button-reg' onclick="/sign_up" value="Зареєструватися">
+        </form>
+
+  {# Assumes you setup the password_reset view in your URLconf #}
+<!--  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>-->
+</div>
+</div>
+
+
+
+<!--<script>-->
+<!--    function redirectToPage() {-->
+<!--        // Зміна URL-->
+<!--        window.location.href = "/sign_up";-->
+<!--    }-->
+
+
+<!--</script>-->
+
+{% endblock %}

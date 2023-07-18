@@ -1,0 +1,66 @@
+{% extends "my_app/base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-5">
+    <div class="title-films">
+        <h1>Прочитані книги</h1>
+    </div>
+    <div class="cool-table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Постер</th>
+                    <th>Назва</th>
+                    <th>Автор</th>
+                    <th>Дата додавання</th>
+                    <th>Коментар</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td> <div class="film-img-wrap"> <img alt="" src='{{ book.img_url }}' > </div> </td>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.date }}</td>
+                        <td>{{ book.comment }}</td>
+
+                        <td> <form class="film-btn-1" action="{% url 'my_app:delete_readed_books' book.id %}" method="post">
+                                {% csrf_token %}
+                                <input class="my-button" type="submit" value="Видалити">
+                            </form>
+                            <form action="{% url 'my_app:correct_readed_books' book.id %}" method="get">
+                                {% csrf_token %}
+                                <input class="my-button" type="submit" value="Редагувати">
+                            </form>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: 20px;">
+        <div style="display: flex; align-items: center;">
+
+            <form  action="{% url 'my_app:random_readed_books' %}" method="post">
+                {% csrf_token %}
+             <input class="my-button-random" type="submit" value="Що почитати?">
+            </form>
+                <div class="cool-random-wrap">
+                    {% if rand_film %}
+                    <h2 style="font-size: 20px;" class="random-title">{{ rand_film }}</h2>
+                    {% endif %}
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

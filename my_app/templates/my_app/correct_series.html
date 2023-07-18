@@ -1,0 +1,28 @@
+{% extends "my_app/base.html" %}
+
+{% block content %}
+<div class="container-4">
+    <div class="container marketing">
+    {% load crispy_forms_tags %}
+        <form action= "" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+    <button class="my-button-reg" type="submit" onclick="redirectToPage()" >Зберегти</button>
+
+        </form>
+    </div>
+
+
+</div>
+
+    <script>
+    function redirectToPage() {
+        // Зміна URL
+        window.location.href = "{% url 'my_app:series' %}";
+    }
+
+
+</script>
+
+{% endblock %}
