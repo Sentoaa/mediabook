@@ -351,7 +351,7 @@ def add_books(request):
     if request.method == 'POST':
         form = BooksForm(request.POST)
         if form.is_valid():
-            q = Books(title=form.cleaned_data['title'], author=form.cleaned_data['title'], comment=form.cleaned_data['comment'], img_url=get_img_url(form.cleaned_data['title']), user = request.user)
+            q = Books(title=form.cleaned_data['title'], author=form.cleaned_data['author'], comment=form.cleaned_data['comment'], img_url=get_img_url(form.cleaned_data['title']), user = request.user)
             # q = Books(title=form.cleaned_data['title'], author=form.cleaned_data['author'], comment=form.cleaned_data['comment'], img_url=get_img_url(form.cleaned_data['title']))
             q.save()
 
