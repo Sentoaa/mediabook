@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ak^lf4$z18mmtvr30gb4w0@@hy%xf*-g65-g+bp7*mfkis-3p0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sentoa.pythonanywhere.com']
 
 
 # Application definition
@@ -131,3 +131,4 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = '/my_app/'
+
