@@ -17,7 +17,7 @@ import random
 
 def random_films(request):
     if request.method == 'POST':
-        all_films = Films.objects.all()
+        all_films = Films.objects.filter(Q(user=request.user) | Q(user=None))
         films = [film.title for film in all_films]
         rand_film = random.choice(films)
         return render(request, 'my_app/films.html', {'films': all_films, 'rand_film': rand_film})
@@ -27,7 +27,7 @@ def random_films(request):
 
 def random_watched_films(request):
     if request.method == 'POST':
-        all_films = WatchedFilms.objects.all()
+        all_films = WatchedFilms.objects.filter(Q(user=request.user) | Q(user=None))
         films = [film.title for film in all_films]
         rand_film = random.choice(films)
         return render(request, 'my_app/watched_films.html', {'films': all_films, 'rand_film': rand_film})
@@ -37,7 +37,7 @@ def random_watched_films(request):
 
 def random_series(request):
     if request.method == 'POST':
-        all_films = Series.objects.all()
+        all_films = Series.objects.filter(Q(user=request.user) | Q(user=None))
         films = [film.title for film in all_films]
         rand_film = random.choice(films)
         return render(request, 'my_app/series.html', {'series': all_films, 'rand_film': rand_film})
@@ -47,7 +47,7 @@ def random_series(request):
 
 def random_watched_series(request):
     if request.method == 'POST':
-        all_films = WatchedSeries.objects.all()
+        all_films = WatchedSeries.objects.filter(Q(user=request.user) | Q(user=None))
         films = [film.title for film in all_films]
         rand_film = random.choice(films)
         return render(request, 'my_app/watched_series.html', {'series': all_films, 'rand_film': rand_film})
@@ -57,7 +57,7 @@ def random_watched_series(request):
 
 def random_books(request):
     if request.method == 'POST':
-        all_films = Books.objects.all()
+        all_films = Books.objects.filter(Q(user=request.user) | Q(user=None))
         films = [film.title for film in all_films]
         rand_film = random.choice(films)
         return render(request, 'my_app/books.html', {'books': all_films, 'rand_film': rand_film})
@@ -67,7 +67,7 @@ def random_books(request):
 
 def random_readed_books(request):
     if request.method == 'POST':
-        all_films = ReadedBooks.objects.all()
+        all_films = ReadedBooks.objects.filter(Q(user=request.user) | Q(user=None))
         films = [film.title for film in all_films]
         rand_film = random.choice(films)
         return render(request, 'my_app/readed_books.html', {'books': all_films, 'rand_film': rand_film})

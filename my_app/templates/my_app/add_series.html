@@ -1,7 +1,14 @@
+
 {% extends "my_app/base.html" %}
 {% block title %}
 <title>Add series</title>
     {% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'my_app/css/style_books.css' %}">
+    {% endblock %}
+
 {% block content %}
 <div class="container-4">
     <div class="container marketing">

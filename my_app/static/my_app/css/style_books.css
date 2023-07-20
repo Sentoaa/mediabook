@@ -1,0 +1,396 @@
+.container-login {
+    display: flex;
+    justify-content: center;
+    background-image: url('login.jpeg');
+    align-items: center;
+    color: black;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px 0 150px;
+    min-height: 100vh;
+
+  }
+
+.cool-table-wrap{
+    padding: 20px;
+    background: rgba(0,0,0,0.25);
+    display: inline-block;
+    border-radius: 10px;
+    margin-left: 25px;
+}
+
+.cool-random-wrap{
+    padding: 10px;
+    background: rgba(0,0,0,0.25);
+    display: inline-block;
+    border-radius: 10px;
+    margin-left: 25px;
+    font-size: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cool-login-wrap{
+    padding: 10px;
+    background: rgba(0,0,0,0.25);
+    display: inline-block;
+    border-radius: 20px;
+    margin-left: 25px;
+    font-size: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.form-text {
+    color: white !important;
+    margin-left: 0px !important;
+}
+.form-text ul{
+    text-align: left;
+}
+
+.cool-s-wrap{
+    padding: 25px;
+    background: rgba(0,0,0,0.25);
+    display: inline-block;
+    border-radius: 20px;
+    margin-left: 0px;
+    font-size: 15px;
+    margin-top: 0px;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    place-items: center !important;
+}
+
+.container-sign-up {
+    display: flex;
+    background-image: url('login.jpeg');
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px 0 150px;
+    min-height: 100vh;
+  }
+
+
+
+
+
+
+span {
+  display: none;
+}
+
+.form-label{
+    font-size: 15px;
+    color: black;
+}
+
+
+.cool-table-wrap tr > td:first-child{
+    max-width: 300px;
+    text-align: left;
+    display: block;
+}
+
+.main-home-wrap{
+    margin-top: 20px;
+}
+
+
+.container-3 {
+    background-color: #ffffff;
+    background-image: url('films.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 65px 0 30px;
+    min-height: 100vh;
+}
+.container-4 {
+    background-color: #ffffff;
+    background-image: url('series.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 65px 0 30px;
+    min-height: 100vh;
+}
+.container-5 {
+    background-color: #ffffff;
+    background-image: url('books.jpeg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 65px 0 30px;
+    min-height: 100vh;
+}
+
+
+
+
+img{max-width:100%;height:auto;}
+
+.container-2 {
+  margin-left: auto;
+  margin-right: auto;
+    color: black;
+    height: 50px;
+}
+.footer {
+    margin-left: auto;
+     margin-right: auto;
+}
+
+.footer-text {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+}
+
+        h1 {
+            margin-left: 220px;
+
+            /*font-family: Italic, sans-serif;*/
+            color: white; /* Змініть "#ffffff" на бажаний колір тексту */
+        }
+
+        h6 {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transform: translate(-50%, -50%);
+            color: #ffffff; /* Змініть "#ffffff" на бажаний колір тексту */
+            font-family: Italic, sans-serif;
+        }
+
+        p {
+            margin-left: 200px;
+            font-family: ItalicT, sans-serif;
+            color: black; /* Змініть "#ffffff" на бажаний колір тексту */
+        }
+
+        /* Встановлення кольору тексту заголовків */
+        h1 {
+            color: white; /* Змініть "#ffffff" на бажаний колір тексту */
+        }
+        h2 {
+            color: white; /* Змініть "#ffffff" на бажаний колір тексту */
+        }
+
+        /* Стилі для таблиці */
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-left: 20px;
+            margin-right: 0px;
+            margin-top: 50px;
+        }
+        .cool-table-wrap table {
+            border: none;
+            margin:0;
+            width:100%;
+        }
+        .cool-table-wrap table tr{
+            border-bottom: 1px solid #fff;
+        }
+
+        table th {
+            padding: 10px;
+            color: white;
+            text-align: center;
+            font-size: 25px; /* Встановіть бажаний розмір шрифту */
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+
+        }
+        table td {
+            padding: 10px;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        /* Стилі для контейнера форми і самої форми */
+        #createNoteContainer {
+            margin-top: 100px;
+        }
+
+        #createNoteForm {
+    margin-top: 20px;
+}
+         .my-button {
+  background-color: black; /* Set the background color */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  color: #ffffff; /* Set the text color */
+  /*border: none; !* Remove the border *!*/
+  padding: 10px 20px; /* Adjust the padding */
+  font-size: 16px; /* Adjust the font size */
+  margin-top: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-radius: 15px;
+  /*opacity: 0.5;*/
+   /*Add any other styles you want */
+}
+
+    .my-button-reg {
+  background-color: black; /* Set the background color */
+  color: #ffffff; /* Set the text color */
+
+  padding: 10px 20px; /* Adjust the padding */
+  font-size: 16px; /* Adjust the font size */
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  border-radius: 15px;
+
+}
+
+    .my-button-random {
+  background-color: black; /* Set the background color */
+  color: #ffffff; /* Set the text color */
+  padding: 10px 20px; /* Adjust the padding */
+  font-size: 16px; /* Adjust the font size */
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-top: 10px;
+  border-radius: 15px;
+}
+    .random-title{
+
+  display: flex;
+  align-items: center;
+  color: white;
+  text-align: center;
+    }
+
+         .nav-link {
+  background-color: white; /* Set the background color */
+  color: black; /* Set the text color */
+  /*border: none; !* Remove the border *!*/
+  padding: 10px 20px; /* Adjust the padding */
+  font-size: 16px; /* Adjust the font size */
+             margin-left: 0px;
+            margin-right: 0px;
+             border-radius: 100px;
+   /*Add any other styles you want */
+}
+         .col-md-3 {
+  background-color: white; /* Set the background color */
+  color: black; /* Set the text color */
+  /*border: none; !* Remove the border *!*/
+  padding: 10px 20px; /* Adjust the padding */
+  font-size: 16px; /* Adjust the font size */
+             margin-left: 0px;
+            margin-right: 0px;
+             border-radius: 100px;
+   /*Add any other styles you want */
+}
+
+input[type="text"], input[type="password"] {
+  width: 260px; /* Задати ширину поля вводу */
+  height: 30px; /* Задати висоту поля вводу */
+  font-size: 16px; /* Задати розмір шрифту */
+}
+
+
+    .my-bar-line {
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 0 5px black;
+        position: relative;
+    }
+
+    .my-bar-line-f {
+        padding: 25px 0;
+        border-top: 1px solid #ccc;
+        box-shadow: 0 0 2px black;
+        bottom: 0;
+        z-index: 10000;
+    }
+
+    .title-films{
+        margin-top: -30px;
+        margin-bottom: 30px;
+        margin-right: auto;
+    }
+    .title-films h1{
+        font-weight: 700;
+        /*text-shadow: 2px 2px 1px #fff;*/
+    }
+
+
+#scrollToTop{
+    position: fixed;
+    right: 30px;
+    bottom :30px;
+    cursor: pointer;
+}
+#scrollToTop .scrollToTop-ico{
+    background: rgba(0,0,0,0.75);
+    padding: 10px;
+    width: 50px;
+    border-radius: 100%;
+    opacity: 0.75;
+}
+
+.film-img-wrap{
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.film-img-wrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.film-btn-1{
+    margin-bottom: 5px;
+}
+
+
+
+
+
+
+.reg-text {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.reg-login {
+    justify-content: center;
+    align-items: center;
+}
+
+.loginform {
+    padding-top:20px;
+}
+.loginform input,
+.signupform input{
+    display:block;
+    margin: auto;
+}
+
+.loginform h2 {
+    color: #000;
+}
+.loginform input.button-register{
+    margin: 20px auto 0;
+}
+/*.date-text{*/
+/*    font-size: 15px !important;*/
+/*}*/
