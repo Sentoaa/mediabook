@@ -92,7 +92,7 @@ span {
 
 .form-label{
     font-size: 15px;
-    color: black;
+    color: black !important;
 }
 
 

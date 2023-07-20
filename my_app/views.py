@@ -18,61 +18,67 @@ import random
 def random_films(request):
     if request.method == 'POST':
         all_films = Films.objects.filter(Q(user=request.user) | Q(user=None))
-        films = [film.title for film in all_films]
-        rand_film = random.choice(films)
-        return render(request, 'my_app/films.html', {'films': all_films, 'rand_film': rand_film})
-    else:
-        return redirect('/my_app/')
+        if all_films:
+            films = [film.title for film in all_films]
+            rand_film = random.choice(films)
+            return render(request, 'my_app/films.html', {'films': all_films, 'rand_film': rand_film})
+        else:
+            return redirect('/films/')
 
 
 def random_watched_films(request):
     if request.method == 'POST':
         all_films = WatchedFilms.objects.filter(Q(user=request.user) | Q(user=None))
-        films = [film.title for film in all_films]
-        rand_film = random.choice(films)
-        return render(request, 'my_app/watched_films.html', {'films': all_films, 'rand_film': rand_film})
-    else:
-        return redirect('/my_app/')
+        if all_films:
+            films = [film.title for film in all_films]
+            rand_film = random.choice(films)
+            return render(request, 'my_app/watched_films.html', {'films': all_films, 'rand_film': rand_film})
+        else:
+            return redirect('/watched_films/')
 
 
 def random_series(request):
     if request.method == 'POST':
         all_films = Series.objects.filter(Q(user=request.user) | Q(user=None))
-        films = [film.title for film in all_films]
-        rand_film = random.choice(films)
-        return render(request, 'my_app/series.html', {'series': all_films, 'rand_film': rand_film})
-    else:
-        return redirect('/my_app/')
+        if all_films:
+            films = [film.title for film in all_films]
+            rand_film = random.choice(films)
+            return render(request, 'my_app/series.html', {'series': all_films, 'rand_film': rand_film})
+        else:
+            return redirect('/series/')
 
 
 def random_watched_series(request):
     if request.method == 'POST':
         all_films = WatchedSeries.objects.filter(Q(user=request.user) | Q(user=None))
-        films = [film.title for film in all_films]
-        rand_film = random.choice(films)
-        return render(request, 'my_app/watched_series.html', {'series': all_films, 'rand_film': rand_film})
-    else:
-        return redirect('/my_app/')
+        if all_films:
+            films = [film.title for film in all_films]
+            rand_film = random.choice(films)
+            return render(request, 'my_app/watched_series.html', {'series': all_films, 'rand_film': rand_film})
+        else:
+            return redirect('/watched_series/')
 
 
 def random_books(request):
     if request.method == 'POST':
         all_films = Books.objects.filter(Q(user=request.user) | Q(user=None))
-        films = [film.title for film in all_films]
-        rand_film = random.choice(films)
-        return render(request, 'my_app/books.html', {'books': all_films, 'rand_film': rand_film})
-    else:
-        return redirect('/my_app/')
+        if all_films:
+            films = [film.title for film in all_films]
+            rand_film = random.choice(films)
+            return render(request, 'my_app/books.html', {'books': all_films, 'rand_film': rand_film})
+        else:
+            return redirect('/books/')
 
 
 def random_readed_books(request):
     if request.method == 'POST':
         all_films = ReadedBooks.objects.filter(Q(user=request.user) | Q(user=None))
-        films = [film.title for film in all_films]
-        rand_film = random.choice(films)
-        return render(request, 'my_app/readed_books.html', {'books': all_films, 'rand_film': rand_film})
-    else:
-        return redirect('/my_app/')
+        if all_films:
+            films = [film.title for film in all_films]
+            rand_film = random.choice(films)
+            return render(request, 'my_app/readed_books.html', {'books': all_films, 'rand_film': rand_film})
+        else:
+            return redirect('/readed_books/')
 
 
 def game(request):
@@ -89,7 +95,7 @@ def get_img_url(film_title):
     if detected_language == 'en':
         film_title = film_title
 
-    url = "https://uk.wikipedia.org/w/api.php" and "https://en.wikipedia.org/w/api.php"
+    url = "https://uk.wikipedia.org/w/api.php" or "https://en.wikipedia.org/w/api.php" or "https://ru.wikipedia.org/w/api.php"
 
     # Параметри запиту
     params = {
@@ -98,8 +104,9 @@ def get_img_url(film_title):
         "prop": "extracts",
         "exintro": True,
         "explaintext": True,
-        "titles": film_title,
+        "titles": film_title or film_title + ' (film)',
     }
+
 
     # Зробити запит до API Вікіпедії
     response = requests.get(url, params=params)
@@ -158,6 +165,8 @@ def get_img_url(film_title):
 
             else:
                 return 'https://lms.beetroot.academy:3005/pub/057c2f24-30a0-4027-9cb1-de714b3cd180.png'
+
+
 
 
 def home(request):
