@@ -95,8 +95,14 @@ def get_img_url(film_title):
     if detected_language == 'en':
         film_title = film_title
 
-    url = "https://uk.wikipedia.org/w/api.php" or "https://en.wikipedia.org/w/api.php" or "https://ru.wikipedia.org/w/api.php"
+    url = ["https://uk.wikipedia.org/w/api.php", "https://en.wikipedia.org/w/api.php", "https://ru.wikipedia.org/w/api.php"]
 
+    if detected_language == 'uk':
+        url = url[0]
+    elif detected_language == 'ru':
+        url = url[2]
+    else:
+        url = url[2]
     # Параметри запиту
     params = {
         "action": "query",
@@ -104,7 +110,7 @@ def get_img_url(film_title):
         "prop": "extracts",
         "exintro": True,
         "explaintext": True,
-        "titles": film_title or film_title + ' (film)',
+        "titles": film_title,
     }
 
 
@@ -130,41 +136,43 @@ def get_img_url(film_title):
     soup = BeautifulSoup(html_content, "html.parser")
 
     # Пошук тегу зображення з атрибутом alt, що містить назву фільма
-    img_tag = soup.find("img", alt=re.compile(film_title.replace(" ", ""), re.IGNORECASE)) \
-              or soup.find("img", alt=re.compile(film_title,re.IGNORECASE)) or \
-              soup.find("img", alt=re.compile(film_title.replace(" ", "_"), re.IGNORECASE))
+    img_tags = [soup.find("img", alt=re.compile(film_title.replace(" ", ""), re.IGNORECASE)),
+               soup.find("img", alt=re.compile(film_title,re.IGNORECASE)),
+               soup.find("img", alt=re.compile(film_title.replace(" ", "_"), re.IGNORECASE))]
 
     # Отримання URL зображення
-    if img_tag:
-        image_url = img_tag["src"]
-        return image_url
-        # print("URL постера фільма:", image_url)
+    for img_tag in img_tags:
+        if img_tag:
+            image_url = img_tag["src"]
+            # print("Hello for")
+            return image_url
+
+
+    url = f"https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles={film_title}&pithumbsize=500"
+    response = requests.get(url)
+    # print("Hello next")
+    data = response.json()
+
+    pages = data["query"]["pages"]
+    page_id = list(pages.keys())[0]
+
+    if "thumbnail" in pages[page_id]:
+        cover_url = pages[page_id]["thumbnail"]["source"]
+        return cover_url
     else:
-        url = f"https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles={film_title}&pithumbsize=500"
-        response = requests.get(url)
+        img_tag = soup.findAll("img")
 
-        data = response.json()
+        for img in img_tag:
+            img = str(img)
+            if 'alt' not in img:
+                pattern = re.compile(r'src="([^"]*)"')
+                result = re.search(pattern, img)
+                if result:
+                    src_value = result.group(1)
+                    return src_value
 
-        pages = data["query"]["pages"]
-        page_id = list(pages.keys())[0]
-
-        if "thumbnail" in pages[page_id]:
-            cover_url = pages[page_id]["thumbnail"]["source"]
-            return cover_url
         else:
-            img_tag = soup.findAll("img")
-
-            for img in img_tag:
-                img = str(img)
-                if 'alt' not in img:
-                    pattern = re.compile(r'src="([^"]*)"')
-                    result = re.search(pattern, img)
-                    if result:
-                        src_value = result.group(1)
-                        return src_value
-
-            else:
-                return 'https://lms.beetroot.academy:3005/pub/057c2f24-30a0-4027-9cb1-de714b3cd180.png'
+            return 'https://lms.beetroot.academy:3005/pub/057c2f24-30a0-4027-9cb1-de714b3cd180.png'
 
 
 
