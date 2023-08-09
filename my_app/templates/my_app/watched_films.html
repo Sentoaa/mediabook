@@ -38,10 +38,7 @@
                         <td>{{ film.comment }}</td>
 
                         <td>
-                            <form action="{% url 'my_app:delete_watched_film' film.id %}" method="post">
-                                {% csrf_token %}
-                                <input class="my-button" type="submit" value="Видалити">
-                            </form>
+                           <a href="{% url 'my_app:delete_watched_film' film.id %}" ><input style="margin-bottom: 4.5px" class="my-button" type="submit" value="Видалити"></a>
                             <form action="{% url 'my_app:correct_watched_film' film.id %}" method="get">
                                 {% csrf_token %}
                                 <input class="my-button" type="submit" value="Редагувати">

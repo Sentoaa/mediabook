@@ -36,10 +36,8 @@
                         <td>{{ series.date }}</td>
                         <td>{{ series.comment }}</td>
 
-                        <td> <form class="film-btn-1" action="{% url 'my_app:delete_series' series.id %}" method="post">
-                                {% csrf_token %}
-                                <input class="my-button" type="submit" value="Видалити">
-                        </form>
+                        <td> <a href="{% url 'my_app:delete_series' series.id %}" ><input style="margin-bottom: 4.5px" class="my-button" type="submit" value="Видалити"></a>
+
                             <form class="film-btn-1" action="{% url 'my_app:to_watched_series' series.id %}" method="post">
                                 {% csrf_token %}
                                 <input class="my-button" type="submit" value="Переглянув">

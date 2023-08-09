@@ -38,10 +38,8 @@
                         <td>{{ book.date }}</td>
                         <td>{{ book.comment }}</td>
 
-                        <td> <form class="film-btn-1" action="{% url 'my_app:delete_books' book.id %}" method="post">
-                                {% csrf_token %}
-                                <input class="my-button" type="submit" value="Видалити">
-                            </form>
+                        <td>
+                            <a href="{% url 'my_app:delete_books' book.id %}" ><input style="margin-bottom: 4.5px" class="my-button" type="submit" value="Видалити"></a>
                             <form class="film-btn-1" action="{% url 'my_app:to_readed_books' book.id %}" method="post">
                                 {% csrf_token %}
                                 <input class="my-button" type="submit" value="Прочитав">

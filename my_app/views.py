@@ -381,57 +381,70 @@ def add_books(request):
 
 
 def delete_film(request, film_id):
-        if request.method == 'POST':
-            film = Films.objects.get(pk=film_id)
+    film = Films.objects.get(pk=film_id)
+    if request.method == 'POST':
+        if 'confirm' in request.POST:
             film.delete()
             return redirect('/my_app/films/')
         else:
-            return HttpResponseRedirect('/my_app/films/')
+            return redirect('/my_app/films/')
+    return render(request, 'my_app/confirm_del_films.html', {'film': film})
+
 
 
 def delete_watched_film(request, film_id):
+    film = WatchedFilms.objects.get(pk=film_id)
     if request.method == 'POST':
-        film = WatchedFilms.objects.get(pk=film_id)
-        film.delete()
-        return redirect('/my_app/watched_films/')
-    else:
-        return HttpResponseRedirect('/my_app/watched_films/')
+        if 'confirm' in request.POST:
+            film.delete()
+            return redirect('/my_app/watched_films/')
+        else:
+            return redirect('/my_app/watched_films/')
+    return render(request, 'my_app/confirm_del_watched_films.html', {'film': film})
 
 
 def delete_series(request, series_id):
-        if request.method == 'POST':
-            series = Series.objects.get(pk=series_id)
-            series.delete()
+    film = Series.objects.get(pk=series_id)
+    if request.method == 'POST':
+        if 'confirm' in request.POST:
+            film.delete()
             return redirect('/my_app/series/')
         else:
-            return HttpResponseRedirect('/my_app/series/')
+            return redirect('/my_app/series/')
+    return render(request, 'my_app/confirm_del_series.html', {'film': film})
 
 
 def delete_watched_series(request, series_id):
+    film = WatchedSeries.objects.get(pk=series_id)
     if request.method == 'POST':
-        film = WatchedSeries.objects.get(pk=series_id)
-        film.delete()
-        return redirect('/my_app/watched_series/')
-    else:
-        return HttpResponseRedirect('/my_app/watched_series/')
+        if 'confirm' in request.POST:
+            film.delete()
+            return redirect('/my_app/watched_series/')
+        else:
+            return redirect('/my_app/watched_series/')
+    return render(request, 'my_app/confirm_del_watched_series.html', {'film': film})
 
 
 def delete_books(request, book_id):
-        if request.method == 'POST':
-            books = Books.objects.get(pk=book_id)
-            books.delete()
+    film = Books.objects.get(pk=book_id)
+    if request.method == 'POST':
+        if 'confirm' in request.POST:
+            film.delete()
             return redirect('/my_app/books/')
         else:
-            return HttpResponseRedirect('/my_app/books/')
+            return redirect('/my_app/books/')
+    return render(request, 'my_app/confirm_del_books.html', {'film': film})
 
 
 def delete_readed_books(request, book_id):
+    film = ReadedBooks.objects.get(pk=book_id)
     if request.method == 'POST':
-        film = ReadedBooks.objects.get(pk=book_id)
-        film.delete()
-        return redirect('/my_app/readed_books/')
-    else:
-        return HttpResponseRedirect('/my_app/readed_books/')
+        if 'confirm' in request.POST:
+            film.delete()
+            return redirect('/my_app/readed_books/')
+        else:
+            return redirect('/my_app/readed_books/')
+    return render(request, 'my_app/confirm_del_readed_books.html', {'film': film})
 
 
 def sign_up(request):

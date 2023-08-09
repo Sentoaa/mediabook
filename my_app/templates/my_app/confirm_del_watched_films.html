@@ -1,0 +1,38 @@
+{% extends "my_app/base.html" %}
+{% block title %}
+<title>Films</title>
+    {% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'my_app/css/style.css' %}">
+    {% endblock %}
+
+
+{% block content %}
+
+
+<div class="container-3">
+    <div class="centered-content">
+        <div class="cool-random-wrap-del">
+            <h1 style="color: white; margin-bottom: 20px" class="centered-title" >А може не треба?</h1>
+            <form method="post">
+            {% csrf_token %}
+            <button class="my-button" name="confirm">Треба!</button>
+            <button style="margin-left: 10px" class="my-button" onclick="redirectToPage()">Вмовив! Охорона, відміна!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function redirectToPage() {
+        // Зміна URL
+        window.location.href = "{% url 'my_app:watched_films' %}";
+    }
+</script>
+
+
+
+{% endblock %}
