@@ -1,3 +1,9 @@
+.centered-title {
+    text-align: center;
+    margin: 0;
+}
+
+
 .container-login {
     display: flex;
     justify-content: center;
@@ -19,6 +25,25 @@
     border-radius: 10px;
     margin-left: 25px;
 }
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.cool-random-wrap-del {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    border-radius: 15px;
+    font-size: 10px;
+    text-align: center;
+    /* Ви також можете використовувати margin, якщо вам потрібен відступ від контейнера */
+}
+
 
 .cool-random-wrap{
     padding: 10px;
