@@ -10,18 +10,19 @@
     {% endblock %}
 
 {% block content %}
-<div class="container-5">
-    <div class="container marketing">
-    {% load crispy_forms_tags %}
-        <form action= "" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-{#<!--    {{ form.as_p }}-->#}
-    <button class="my-button-reg" type="submit" onclick="redirectToPage()" >Зберегти</button>
+<div class="overlay" id="overlay">
+    <div class="container-5">
+        <div class="container marketing">
+        {% load crispy_forms_tags %}
+            <form action= "" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+    {#<!--    {{ form.as_p }}-->#}
+        <button class="my-button-reg" type="submit" onclick="redirectToPage()" >Зберегти</button>
 
-</form>
-</div>
-
+    </form>
+    </div>
+    </div>
 
 </div>
     <script>
@@ -29,6 +30,35 @@
         // Зміна URL
         window.location.href = "{% url 'my_app:books' %}";
     }
+// Отримайте посилання на елемент overlay
+const overlay = document.getElementById('overlay');
+
+// Функція для блокування/розблокування контейнера
+function toggleOverlay() {
+    overlay.style.pointerEvents = overlay.style.pointerEvents === 'none' ? 'auto' : 'none';
+    overlay.style.cursor = overlay.style.pointerEvents === 'none' ? 'wait' : 'auto';
+}
+
+// Виклик функції при кліку на кнопку "Додати книгу"
+document.querySelector('.my-button-reg').addEventListener('click', toggleOverlay);
+
+
+// Функція для зміни вигляду курсора на годинник
+function changeCursorToClock() {
+    document.body.style.cursor = 'wait';
+}
+
+// Функція для повернення стандартного вигляду курсора
+function resetCursor() {
+    document.body.style.cursor = 'auto';
+}
+
+// Виклик функції при кліку на кнопку "Додати книгу"
+document.querySelector('.my-button-reg').addEventListener('click', changeCursorToClock);
+
+// Виклик функції для повернення стандартного вигляду курсора при завершенні додавання
+// Ви маєте включити цей виклик відповідно до вашої логіки завершення додавання
+resetCursor();
 
 
 </script>

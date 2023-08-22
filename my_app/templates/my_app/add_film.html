@@ -10,23 +10,52 @@
     {% endblock %}
 
 {% block content %}
-<div class="container-3">
-    <div class="container marketing">
-    {% load crispy_forms_tags %}
-        <form action= "" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="my-button-reg" type="submit" onclick="redirectToPage()" >Зберегти</button>
-        </form>
+<div class="overlay" id="overlay">
+    <div class="container-3">
+        <div class="container marketing">
+        {% load crispy_forms_tags %}
+            <form action= "" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="my-button-reg" type="submit" onclick="redirectToPage()" >Зберегти</button>
+            </form>
+        </div>
     </div>
 </div>
-
     <script>
     function redirectToPage() {
         // Зміна URL
         window.location.href = "{% url 'my_app:films' %}";
     }
+// Отримайте посилання на елемент overlay
+const overlay = document.getElementById('overlay');
 
+// Функція для блокування/розблокування контейнера
+function toggleOverlay() {
+    overlay.style.pointerEvents = overlay.style.pointerEvents === 'none' ? 'auto' : 'none';
+    overlay.style.cursor = overlay.style.pointerEvents === 'none' ? 'wait' : 'auto';
+}
+
+// Виклик функції при кліку на кнопку "Додати книгу"
+document.querySelector('.my-button-reg').addEventListener('click', toggleOverlay);
+
+
+// Функція для зміни вигляду курсора на годинник
+function changeCursorToClock() {
+    document.body.style.cursor = 'wait';
+}
+
+// Функція для повернення стандартного вигляду курсора
+function resetCursor() {
+    document.body.style.cursor = 'auto';
+}
+
+// Виклик функції при кліку на кнопку "Додати книгу"
+document.querySelector('.my-button-reg').addEventListener('click', changeCursorToClock);
+
+// Виклик функції для повернення стандартного вигляду курсора при завершенні додавання
+// Ви маєте включити цей виклик відповідно до вашої логіки завершення додавання
+resetCursor();
 
 </script>
 
